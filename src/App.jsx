@@ -26,6 +26,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import NotFound from './pages/NotFound';
 
+import ScrollCylinder from './components/ui/ScrollCylinder';
+
 function AppContent() {
   const location = useLocation();
 
@@ -33,6 +35,7 @@ function AppContent() {
     <SmoothScrollWrapper>
       <div className="flex flex-col min-h-screen bg-dark-bg text-white/90">
         <Header />
+        <ScrollCylinder />
         <main className="flex-grow overflow-x-clip">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
