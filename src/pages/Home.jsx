@@ -135,20 +135,44 @@ export default function Home() {
               </span>
             </motion.div>
 
-            <h1 className="font-poppins font-black text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight leading-[1.05] mb-6">
-              <SplitText>Heavy Duty</SplitText> <br />
-              <span className="inline-block overflow-hidden py-[0.05em] drop-shadow-[0_0_8px_rgba(255,107,0,0.35)]">
+            <h1 className="font-poppins font-black text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white uppercase tracking-tight leading-[1.08] mb-8">
+
+              {/* Line 1: HEAVY DUTY */}
+              <span className="block overflow-hidden py-[0.05em]">
                 <motion.span
                   initial={{ y: '110%' }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary inline-block font-black"
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="block"
+                >
+                  Heavy Duty
+                </motion.span>
+              </span>
+
+              {/* Line 2: HYDRAULIC CYLINDER — gradient + glow, forced single line */}
+              <span className="block overflow-hidden py-[0.05em] drop-shadow-[0_0_20px_rgba(255,107,0,0.4)]">
+                <motion.span
+                  initial={{ y: '110%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-accent via-orange-400 to-primary whitespace-nowrap"
                 >
                   Hydraulic Cylinder
                 </motion.span>
-              </span> <br />
-              <SplitText delay={0.3}>Manufacturer</SplitText>
+              </span>
+
+              {/* Line 3: MANUFACTURER */}
+              <span className="block overflow-hidden py-[0.05em]">
+                <motion.span
+                  initial={{ y: '110%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="block"
+                >
+                  Manufacturer
+                </motion.span>
+              </span>
+
             </h1>
 
             <motion.p
@@ -433,14 +457,12 @@ export default function Home() {
                 <Link
                   key={ind.id}
                   to={`/industries#${ind.id}`}
-                  className={`glass-panel rounded-xl sm:rounded-2xl hover:border-accent/20 transition-all duration-300 relative group overflow-hidden flex flex-col cursor-pointer ${
-                    isBig ? 'col-span-2 md:flex-row md:min-h-[240px]' : 'col-span-1'
-                  }`}
+                  className={`glass-panel rounded-xl sm:rounded-2xl hover:border-accent/20 transition-all duration-300 relative group overflow-hidden flex flex-col cursor-pointer ${isBig ? 'col-span-2 md:flex-row md:min-h-[240px]' : 'col-span-1'
+                    }`}
                 >
                   {/* Image Header */}
-                  <div className={`overflow-hidden relative shrink-0 ${
-                    isBig ? 'h-40 sm:h-48 md:h-auto w-full md:w-1/2 md:self-stretch' : 'h-28 sm:h-36 w-full'
-                  }`}>
+                  <div className={`overflow-hidden relative shrink-0 ${isBig ? 'h-40 sm:h-48 md:h-auto w-full md:w-1/2 md:self-stretch' : 'h-28 sm:h-36 w-full'
+                    }`}>
                     <img
                       src={ind.image}
                       alt={ind.name}
@@ -453,13 +475,11 @@ export default function Home() {
                   </div>
 
                   {/* Content */}
-                  <div className={`p-4 md:p-6 space-y-1.5 flex-grow flex flex-col justify-center ${
-                    isBig ? 'pt-4 md:p-8' : 'pt-3'
-                  }`}>
+                  <div className={`p-4 md:p-6 space-y-1.5 flex-grow flex flex-col justify-center ${isBig ? 'pt-4 md:p-8' : 'pt-3'
+                    }`}>
                     <div className="space-y-1 md:space-y-2">
-                      <h3 className={`font-poppins font-bold text-white group-hover:text-accent transition-colors ${
-                        isBig ? 'text-sm sm:text-lg md:text-xl' : 'text-xs sm:text-sm'
-                      }`}>
+                      <h3 className={`font-poppins font-bold text-white group-hover:text-accent transition-colors ${isBig ? 'text-sm sm:text-lg md:text-xl' : 'text-xs sm:text-sm'
+                        }`}>
                         {ind.name}
                       </h3>
                       <p className="text-[10px] sm:text-xs text-white/60 leading-relaxed font-inter line-clamp-2 sm:line-clamp-3">
