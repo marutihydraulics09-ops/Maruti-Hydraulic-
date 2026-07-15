@@ -6,7 +6,7 @@ import { blogPosts } from '../data/siteData';
 export default function Blog() {
   return (
     <>
-      <SEOHeader 
+      <SEOHeader
         title="Hydraulics Engineering Insights & Maintenance Blog"
         description="Read technical advice from Maruti Hydraulics engineers on cylinder seal selection, high-pressure design tips, and tipper cylinder maintenance."
       />
@@ -31,12 +31,12 @@ export default function Blog() {
       <section className="py-20 bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {blogPosts.map((post) => (
-            <div 
+            <div
               key={post.id}
               className="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between hover:border-accent/25 transition-all group"
             >
               <div className="space-y-4">
-                
+
                 {/* Meta details */}
                 <div className="flex flex-wrap gap-4 text-xs font-manrope text-white/50">
                   <span className="flex items-center gap-1">
@@ -52,7 +52,7 @@ export default function Blog() {
                 <h3 className="font-poppins font-bold text-xl text-white group-hover:text-accent transition-colors leading-snug">
                   {post.title}
                 </h3>
-                
+
                 <p className="text-xs md:text-sm text-white/60 leading-relaxed font-inter line-clamp-3">
                   {post.summary}
                 </p>

@@ -454,10 +454,9 @@ export default function Home() {
             {industries.slice(0, 3).map((ind, index) => {
               const isBig = index === 2;
               return (
-                <Link
+                <div
                   key={ind.id}
-                  to={`/industries#${ind.id}`}
-                  className={`glass-panel rounded-xl sm:rounded-2xl hover:border-accent/20 transition-all duration-300 relative group overflow-hidden flex flex-col cursor-pointer ${isBig ? 'col-span-2 md:flex-row md:min-h-[240px]' : 'col-span-1'
+                  className={`glass-panel rounded-xl sm:rounded-2xl hover:border-accent/20 transition-all duration-300 relative group overflow-hidden flex flex-col ${isBig ? 'col-span-2 md:flex-row md:min-h-[240px]' : 'col-span-1'
                     }`}
                 >
                   {/* Image Header */}
@@ -487,7 +486,7 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>

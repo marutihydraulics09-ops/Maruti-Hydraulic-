@@ -5,7 +5,7 @@ import { processSteps } from '../data/siteData';
 export default function Manufacturing() {
   return (
     <>
-      <SEOHeader 
+      <SEOHeader
         title="Hydraulic Cylinders Manufacturing Process | Maruti"
         description="Explore the Maruti Hydraulics manufacturing floor in Naroda GIDC. Learn about CNC machining, cylinder barrel honing, and structural welding."
       />
@@ -29,7 +29,7 @@ export default function Manufacturing() {
       {/* Process list */}
       <section className="py-12 md:py-20 bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-6 space-y-6">
               <h2 className="font-poppins font-black text-2xl md:text-4xl text-white uppercase tracking-tight">
@@ -43,8 +43,8 @@ export default function Manufacturing() {
 
           <div className="space-y-8">
             {processSteps.map((step, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="glass-panel p-8 rounded-3xl border border-white/5 hover:border-accent/20 transition-all flex flex-col md:flex-row gap-6 items-start justify-between"
               >
                 <div className="flex gap-4 items-start">

@@ -6,7 +6,7 @@ import { caseStudies } from '../data/siteData';
 export default function Projects() {
   return (
     <>
-      <SEOHeader 
+      <SEOHeader
         title="Hydraulic Engineering Case Studies | Maruti"
         description="Review actual project case studies where Maruti Hydraulics solved high-temperature seal failures and cylinder bending stress in heavy steel mills and mining tipper trucks."
       />
@@ -31,14 +31,14 @@ export default function Projects() {
       <section className="py-20 bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 md:px-8 space-y-12">
           {caseStudies.map((project) => (
-            <div 
+            <div
               key={project.id}
               className="glass-panel p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl"></div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                
+
                 {/* Details side */}
                 <div className="lg:col-span-8 space-y-6">
                   <div className="space-y-2">

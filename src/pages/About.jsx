@@ -76,7 +76,7 @@ export default function About() {
             Corporate Profile
           </span>
           <h1 className="font-poppins font-black text-4xl md:text-6xl text-white uppercase tracking-tight leading-none">
-            <SplitText>About Maruti Hydraulics</SplitText>
+            <SplitText className="justify-center">About Maruti Hydraulics</SplitText>
           </h1>
           <p className="text-sm md:text-base font-inter text-white/70 max-w-2xl mx-auto leading-relaxed">
             Manufacturer and supplier of premium heavy-duty hydraulic cylinders and power packs, serving global infrastructure, steel, plastic, and earthmoving fields.
@@ -240,9 +240,8 @@ export default function About() {
               <StaggerItem
                 key={idx}
                 type="fade-up"
-                className={`glass-panel p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-white/5 relative group hover:border-accent/20 transition-all duration-300 ${
-                  idx === 2 ? 'col-span-2 md:col-span-1' : 'col-span-1'
-                }`}
+                className={`glass-panel p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-white/5 relative group hover:border-accent/20 transition-all duration-300 ${idx === 2 ? 'col-span-2 md:col-span-1' : 'col-span-1'
+                  }`}
               >
                 <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 bg-accent/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
                 <div className="font-poppins font-black text-2xl sm:text-4xl text-accent/30 group-hover:text-accent transition-colors duration-300 mb-3 sm:mb-6">

@@ -311,46 +311,46 @@ Please review the drawing design stages and provide availability details.`;
 
           {/* VISUALIZER (HUD Blueprint) — pure CSS sticky (lag-free, GPU composited) */}
           <div className="order-1 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 z-30 sticky top-[66px] bg-dark-bg/95 backdrop-blur-md pb-2 pt-1 lg:top-24 lg:self-start lg:bg-transparent lg:backdrop-blur-none lg:pb-0 lg:pt-0 lg:z-10 border-b border-white/5 lg:border-none">
-              <div className="glass-panel p-2 sm:p-3 rounded-xl md:rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden flex flex-col items-center shadow-2xl">
-                <div className="absolute top-2 left-2.5 flex items-center gap-1.5 z-10 bg-dark-bg/40 px-2 py-0.5 rounded backdrop-blur">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-                  <span className="text-[8px] font-mono uppercase tracking-widest text-white/70">HUD Blueprint</span>
-                </div>
+            <div className="glass-panel p-2 sm:p-3 rounded-xl md:rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden flex flex-col items-center shadow-2xl">
+              <div className="absolute top-2 left-2.5 flex items-center gap-1.5 z-10 bg-dark-bg/40 px-2 py-0.5 rounded backdrop-blur">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                <span className="text-[8px] font-mono uppercase tracking-widest text-white/70">HUD Blueprint</span>
+              </div>
 
-                {/* Simulation Play/Pause */}
-                <button
-                  onClick={() => setIsAnimating(!isAnimating)}
-                  className="absolute top-2 right-2.5 bg-white/5 hover:bg-white/10 border border-white/10 p-1 rounded text-white/70 hover:text-white transition-all text-[9.5px] flex items-center gap-1 z-20 cursor-pointer"
-                >
-                  {isAnimating ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
-                  <span className="font-mono text-[8px] uppercase tracking-wider">{isAnimating ? "Pause" : "Play"}</span>
-                </button>
+              {/* Simulation Play/Pause */}
+              <button
+                onClick={() => setIsAnimating(!isAnimating)}
+                className="absolute top-2 right-2.5 bg-white/5 hover:bg-white/10 border border-white/10 p-1 rounded text-white/70 hover:text-white transition-all text-[9.5px] flex items-center gap-1 z-20 cursor-pointer"
+              >
+                {isAnimating ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+                <span className="font-mono text-[8px] uppercase tracking-wider">{isAnimating ? "Pause" : "Play"}</span>
+              </button>
 
-                <div className="w-full mt-5">
-                  <CylinderSchematic
-                    type={type}
-                    bore={bore}
-                    rod={rod}
-                    stroke={stroke}
-                    mounting={mounting}
-                    cushioning={cushioning}
-                    pressure={pressure}
-                    isAnimating={isAnimating}
-                    onRearMountClick={handleMountClick}
-                    onFrontMountClick={handleMountClick}
-                    onSizesClick={handleSizesClick}
-                    onCushionClick={handleCushionClick}
-                    onTypeClick={handleTypeClick}
-                  />
-                </div>
+              <div className="w-full mt-5">
+                <CylinderSchematic
+                  type={type}
+                  bore={bore}
+                  rod={rod}
+                  stroke={stroke}
+                  mounting={mounting}
+                  cushioning={cushioning}
+                  pressure={pressure}
+                  isAnimating={isAnimating}
+                  onRearMountClick={handleMountClick}
+                  onFrontMountClick={handleMountClick}
+                  onSizesClick={handleSizesClick}
+                  onCushionClick={handleCushionClick}
+                  onTypeClick={handleTypeClick}
+                />
+              </div>
 
-                {/* SVG Interaction instruction — hidden on mobile */}
-                <div className="hidden sm:flex w-full text-center text-[9px] font-mono text-white/40 pb-1 mt-1 justify-center items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-accent animate-pulse" />
-                  <span>Interactive elements: Click the drawing hotspots to jump directly to options.</span>
-                </div>
+              {/* SVG Interaction instruction — hidden on mobile */}
+              <div className="hidden sm:flex w-full text-center text-[9px] font-mono text-white/40 pb-1 mt-1 justify-center items-center gap-1">
+                <Sparkles className="w-3 h-3 text-accent animate-pulse" />
+                <span>Interactive elements: Click the drawing hotspots to jump directly to options.</span>
               </div>
             </div>
+          </div>
 
           {/* ORDERING CODE + CTA — order 3 on mobile (shows after tabs), left column on desktop */}
           <div className="order-3 lg:col-span-7 lg:col-start-1 lg:row-start-2">
@@ -362,74 +362,74 @@ Please review the drawing design stages and provide availability details.`;
                 <span className="text-[9px] font-mono text-white/40 hidden sm:inline">Tap to decode</span>
               </div>
 
-                {/* monospaced Ordering Code */}
-                <div className="p-3 bg-black/55 border border-white/5 rounded-xl flex flex-wrap gap-y-1 justify-center items-center font-mono text-xs sm:text-sm md:text-base font-black tracking-wider text-center select-none">
-                  <span
-                    className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'company' ? 'bg-accent text-dark-bg' : 'text-white/50 hover:bg-white/5'}`}
-                    onMouseEnter={() => setHoveredSegment('company')}
-                    onMouseLeave={() => setHoveredSegment(null)}
-                  >
-                    MH
-                  </span>
-                  <span className="text-white/20">-</span>
-                  <span
-                    className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'type' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
-                    onMouseEnter={() => setHoveredSegment('type')}
-                    onMouseLeave={() => setHoveredSegment(null)}
-                  >
-                    {type}
-                  </span>
-                  <span className="text-white/20">-</span>
-                  <span
-                    className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'sizes' ? 'bg-accent text-dark-bg' : 'text-accent hover:bg-white/5'}`}
-                    onMouseEnter={() => setHoveredSegment('sizes')}
-                    onMouseLeave={() => setHoveredSegment(null)}
-                  >
-                    {bore}/{rod}
-                  </span>
-                  <span className="text-white/20">-</span>
-                  <span
-                    className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'stroke' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
-                    onMouseEnter={() => setHoveredSegment('stroke')}
-                    onMouseLeave={() => setHoveredSegment(null)}
-                  >
-                    {stroke}
-                  </span>
-                  <span className="text-white/20">-</span>
-                  <span
-                    className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'pressure' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
-                    onMouseEnter={() => setHoveredSegment('pressure')}
-                    onMouseLeave={() => setHoveredSegment(null)}
-                  >
-                    {pressure}
-                  </span>
-                  <span className="text-white/20">-</span>
-                  <span
-                    className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'mounting' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
-                    onMouseEnter={() => setHoveredSegment('mounting')}
-                    onMouseLeave={() => setHoveredSegment(null)}
-                  >
-                    {mounting}
-                  </span>
-                  <span className="text-white/20">-</span>
-                  <span
-                    className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'cushioning' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
-                    onMouseEnter={() => setHoveredSegment('cushioning')}
-                    onMouseLeave={() => setHoveredSegment(null)}
-                  >
-                    {cushioning}
-                  </span>
+              {/* monospaced Ordering Code */}
+              <div className="p-3 bg-black/55 border border-white/5 rounded-xl flex flex-wrap gap-y-1 justify-center items-center font-mono text-xs sm:text-sm md:text-base font-black tracking-wider text-center select-none">
+                <span
+                  className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'company' ? 'bg-accent text-dark-bg' : 'text-white/50 hover:bg-white/5'}`}
+                  onMouseEnter={() => setHoveredSegment('company')}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                >
+                  MH
+                </span>
+                <span className="text-white/20">-</span>
+                <span
+                  className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'type' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
+                  onMouseEnter={() => setHoveredSegment('type')}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                >
+                  {type}
+                </span>
+                <span className="text-white/20">-</span>
+                <span
+                  className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'sizes' ? 'bg-accent text-dark-bg' : 'text-accent hover:bg-white/5'}`}
+                  onMouseEnter={() => setHoveredSegment('sizes')}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                >
+                  {bore}/{rod}
+                </span>
+                <span className="text-white/20">-</span>
+                <span
+                  className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'stroke' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
+                  onMouseEnter={() => setHoveredSegment('stroke')}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                >
+                  {stroke}
+                </span>
+                <span className="text-white/20">-</span>
+                <span
+                  className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'pressure' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
+                  onMouseEnter={() => setHoveredSegment('pressure')}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                >
+                  {pressure}
+                </span>
+                <span className="text-white/20">-</span>
+                <span
+                  className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'mounting' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
+                  onMouseEnter={() => setHoveredSegment('mounting')}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                >
+                  {mounting}
+                </span>
+                <span className="text-white/20">-</span>
+                <span
+                  className={`px-1 rounded transition-colors cursor-pointer py-0.5 ${hoveredSegment === 'cushioning' ? 'bg-accent text-dark-bg' : 'text-white hover:bg-white/5'}`}
+                  onMouseEnter={() => setHoveredSegment('cushioning')}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                >
+                  {cushioning}
+                </span>
               </div>
 
               {/* Explanatory breakdown text */}
               <div className="bg-white/5 border border-white/5 p-3 rounded-xl min-h-[75px] flex flex-col justify-center">
-                  <h5 className="font-poppins font-extrabold text-[9px] uppercase tracking-wider text-accent mb-0.5 flex items-center gap-1">
-                    <Activity className="w-3 h-3" />
-                    {currentExplanation.title}
-                  </h5>
-                  <p className="text-[10.5px] font-inter text-white/75 leading-relaxed">
-                    {currentExplanation.desc}
-                  </p>
+                <h5 className="font-poppins font-extrabold text-[9px] uppercase tracking-wider text-accent mb-0.5 flex items-center gap-1">
+                  <Activity className="w-3 h-3" />
+                  {currentExplanation.title}
+                </h5>
+                <p className="text-[10.5px] font-inter text-white/75 leading-relaxed">
+                  {currentExplanation.desc}
+                </p>
               </div>
 
               {/* Instant WhatsApp CTA */}
@@ -452,9 +452,9 @@ Please review the drawing design stages and provide availability details.`;
             {/* Step-by-Step Tab Controls — 3 equal columns on mobile */}
             <div className="grid grid-cols-3 gap-1.5 sm:flex sm:gap-1 border-b border-white/10 bg-white/[0.01] p-1 rounded-xl">
               {[
-                { id: 'type',       label: '1. Cylinder Type', short: 'Type',       icon: Wrench },
-                { id: 'dimensions', label: '2. Sizing Envelope', short: 'Sizing',    icon: Activity },
-                { id: 'mounting',   label: '3. Mount & Cushion', short: 'Mount',     icon: ShieldCheck }
+                { id: 'type', label: '1. Cylinder Type', short: 'Type', icon: Wrench },
+                { id: 'dimensions', label: '2. Sizing Envelope', short: 'Sizing', icon: Activity },
+                { id: 'mounting', label: '3. Mount & Cushion', short: 'Mount', icon: ShieldCheck }
               ].map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -464,8 +464,8 @@ Please review the drawing design stages and provide availability details.`;
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex-1 py-2.5 sm:py-3 px-1 sm:px-2 text-center rounded-lg text-[10px] sm:text-xs font-manrope font-extrabold uppercase tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 ${isActive
-                        ? 'bg-accent text-dark-bg shadow shadow-accent/25'
-                        : 'text-white/60 hover:text-white hover:bg-white/5'
+                      ? 'bg-accent text-dark-bg shadow shadow-accent/25'
+                      : 'text-white/60 hover:text-white hover:bg-white/5'
                       }`}
                   >
                     <Icon className="w-3.5 h-3.5" />
@@ -505,8 +505,8 @@ Please review the drawing design stages and provide availability details.`;
                           key={key}
                           onClick={() => setType(key)}
                           className={`text-left p-4 rounded-xl border transition-all duration-300 relative flex flex-col md:flex-row md:items-center justify-between gap-3 ${type === key
-                              ? 'bg-accent/5 border-accent/60 shadow-[0_0_15px_rgba(255,107,0,0.1)]'
-                              : 'bg-white/[0.01] border-white/5 hover:border-white/20 hover:bg-white/[0.02]'
+                            ? 'bg-accent/5 border-accent/60 shadow-[0_0_15px_rgba(255,107,0,0.1)]'
+                            : 'bg-white/[0.01] border-white/5 hover:border-white/20 hover:bg-white/[0.02]'
                             }`}
                         >
                           <div className="space-y-1 flex-grow">
@@ -567,8 +567,8 @@ Please review the drawing design stages and provide availability details.`;
                               key={size}
                               onClick={() => setBore(size)}
                               className={`py-2 rounded-lg border text-xs font-mono font-bold transition-all ${bore === size
-                                  ? 'bg-accent text-dark-bg border-accent shadow shadow-accent/25 scale-[1.03]'
-                                  : 'bg-white/5 border-white/5 hover:border-white/20 text-white/80'
+                                ? 'bg-accent text-dark-bg border-accent shadow shadow-accent/25 scale-[1.03]'
+                                : 'bg-white/5 border-white/5 hover:border-white/20 text-white/80'
                                 }`}
                             >
                               Ø{size}
@@ -594,10 +594,10 @@ Please review the drawing design stages and provide availability details.`;
                                 disabled={isInvalid}
                                 onClick={() => !isInvalid && setRod(size)}
                                 className={`py-2 rounded-lg border text-[10px] sm:text-xs font-mono font-bold transition-all relative flex items-center justify-center gap-1 ${isInvalid
-                                    ? 'opacity-20 bg-white/1 cursor-not-allowed border-transparent text-white/20'
-                                    : rod === size
-                                      ? 'bg-accent text-dark-bg border-accent shadow shadow-accent/25 scale-[1.03]'
-                                      : 'bg-white/5 border-white/5 hover:border-white/20 text-white/80'
+                                  ? 'opacity-20 bg-white/1 cursor-not-allowed border-transparent text-white/20'
+                                  : rod === size
+                                    ? 'bg-accent text-dark-bg border-accent shadow shadow-accent/25 scale-[1.03]'
+                                    : 'bg-white/5 border-white/5 hover:border-white/20 text-white/80'
                                   }`}
                               >
                                 Ø{size}
@@ -680,8 +680,8 @@ Please review the drawing design stages and provide availability details.`;
                             key={val}
                             onClick={() => setPressure(val)}
                             className={`p-4 rounded-xl border text-left transition-all ${pressure === val
-                                ? 'bg-accent/5 border-accent/60 shadow-md'
-                                : 'bg-white/[0.01] border-white/5 hover:border-white/15'
+                              ? 'bg-accent/5 border-accent/60 shadow-md'
+                              : 'bg-white/[0.01] border-white/5 hover:border-white/15'
                               }`}
                           >
                             <div className="flex justify-between items-center mb-1">
@@ -754,10 +754,10 @@ Please review the drawing design stages and provide availability details.`;
                               disabled={isDisabled}
                               onClick={() => !isDisabled && setMounting(key)}
                               className={`text-left p-3.5 rounded-xl border transition-all duration-300 relative group/btn ${isDisabled
-                                  ? 'bg-white/[0.01] border-white/5 opacity-40 cursor-not-allowed'
-                                  : mounting === key
-                                    ? 'bg-accent/5 border-accent/60 shadow-[0_0_15px_rgba(255,107,0,0.1)]'
-                                    : 'bg-white/[0.01] border-white/5 hover:border-white/20 hover:bg-white/[0.02]'
+                                ? 'bg-white/[0.01] border-white/5 opacity-40 cursor-not-allowed'
+                                : mounting === key
+                                  ? 'bg-accent/5 border-accent/60 shadow-[0_0_15px_rgba(255,107,0,0.1)]'
+                                  : 'bg-white/[0.01] border-white/5 hover:border-white/20 hover:bg-white/[0.02]'
                                 }`}
                             >
                               <div className="flex justify-between items-start mb-1">
@@ -807,8 +807,8 @@ Please review the drawing design stages and provide availability details.`;
                             key={key}
                             onClick={() => setCushioning(key)}
                             className={`text-left p-3.5 rounded-xl border transition-all duration-300 relative group/btn ${cushioning === key
-                                ? 'bg-accent/5 border-accent/60 shadow-[0_0_15px_rgba(255,107,0,0.1)]'
-                                : 'bg-white/[0.01] border-white/5 hover:border-white/20 hover:bg-white/[0.02]'
+                              ? 'bg-accent/5 border-accent/60 shadow-[0_0_15px_rgba(255,107,0,0.1)]'
+                              : 'bg-white/[0.01] border-white/5 hover:border-white/20 hover:bg-white/[0.02]'
                               }`}
                           >
                             <div className="flex justify-between items-start mb-1">
