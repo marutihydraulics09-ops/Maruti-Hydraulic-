@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function ScrollCylinder() {
+export default function ScrollCylinder({ isMenuOpen = false }) {
   const { scrollYProgress } = useScroll();
   const [percent, setPercent] = useState(0);
 
@@ -17,7 +17,16 @@ export default function ScrollCylinder() {
   const rodY = useTransform(scrollYProgress, [0, 1], [0, 25]);
 
   return (
-    <div className="fixed right-3 bottom-3 md:right-6 md:bottom-6 z-50 flex flex-col items-center gap-1.5 md:gap-2 select-none pointer-events-none">
+    <motion.div
+      initial={{ opacity: 1, y: 0, scale: 1 }}
+      animate={{
+        opacity: isMenuOpen ? 0 : 1,
+        y: isMenuOpen ? 40 : 0,
+        scale: isMenuOpen ? 0.8 : 1,
+      }}
+      transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+      className="fixed right-3 bottom-3 md:right-6 md:bottom-6 z-50 flex flex-col items-center gap-1.5 md:gap-2 select-none pointer-events-none"
+    >
       {/* Label / Readout */}
       <div className="bg-[#080A0E]/90 backdrop-blur border border-white/10 rounded-md py-1 shadow-lg flex items-center justify-center text-center w-20 md:w-24">
         <span className="font-mono text-[8px] md:text-[9px] text-[#FF6B00] font-bold uppercase tracking-wider">
@@ -72,6 +81,6 @@ export default function ScrollCylinder() {
           <rect x="3" y="50" width="12" height="3" fill="url(#accent-grad)" rx="0.5" />
         </svg>
       </div>
-    </div>
+    </motion.div>
   );
 }

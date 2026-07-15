@@ -71,8 +71,11 @@ const itemVariants = {
   }
 };
 
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Header({ isOpen: propIsOpen, setIsOpen: propSetIsOpen }) {
+  const [localIsOpen, setLocalIsOpen] = useState(false);
+  const isOpen = propIsOpen !== undefined ? propIsOpen : localIsOpen;
+  const setIsOpen = propSetIsOpen !== undefined ? propSetIsOpen : setLocalIsOpen;
+
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
 

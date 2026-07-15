@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ToastContainer } from 'react-toastify';
@@ -30,12 +30,13 @@ import ScrollCylinder from './components/ui/ScrollCylinder';
 
 function AppContent() {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <SmoothScrollWrapper>
       <div className="flex flex-col min-h-screen bg-dark-bg text-white/90">
-        <Header />
-        <ScrollCylinder />
+        <Header isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+        <ScrollCylinder isMenuOpen={isMenuOpen} />
         <main className="flex-grow overflow-x-clip">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
