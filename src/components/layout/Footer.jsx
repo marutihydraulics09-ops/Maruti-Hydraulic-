@@ -38,20 +38,20 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-dark-bg border-t border-white/10 text-white/70 pt-20 pb-8 overflow-hidden z-10">
+    <footer className="relative bg-dark-bg border-t border-white/10 text-white/60 pt-12 pb-6 overflow-hidden z-10">
       {/* Blueprint Grid Accent */}
       <div className="absolute inset-0 engineering-grid opacity-[0.03] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
 
         {/* Top Segment: Brand & Socials */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-16 border-b border-white/5">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-white/5">
           {/* Brand Presentation */}
-          <div className="flex flex-col gap-4 max-w-2xl">
+          <div className="flex flex-col gap-3 max-w-2xl">
             <Link to="/">
-              <Logo light={true} className="h-16 md:h-20" />
+              <Logo light={true} className="h-10 md:h-12" />
             </Link>
-            <p className="text-sm font-inter leading-relaxed text-white/60">
+            <p className="text-xs font-inter leading-relaxed text-white/50 max-w-xl">
               Maruti Hydraulics is a premier, ISO-ready engineering company manufacturing heavy-duty hydraulic cylinders and power packs for rugged industrial and mobile machinery worldwide. Precision engineered in Gujarat, India.
             </p>
           </div>
@@ -77,13 +77,13 @@ export default function Footer() {
         </div>
 
         {/* Middle Segment: Columns */}
-        <div className={`grid gap-8 py-16 ${isContactPage ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-2 md:grid-cols-4'}`}>
+        <div className={`grid gap-8 py-10 ${isContactPage ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-2 md:grid-cols-4'}`}>
           {/* Col 1: Products */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-poppins font-extrabold text-white text-xs uppercase tracking-widest border-l-2 border-accent pl-2.5">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-poppins font-extrabold text-white text-[11px] uppercase tracking-widest border-l-2 border-accent pl-2.5">
               Cylinders & Packs
             </h4>
-            <div className="flex flex-col gap-2.5 text-sm">
+            <div className="flex flex-col gap-2 text-xs">
               {products.map((prod) => (
                 <Link
                   key={prod.id}
@@ -97,11 +97,11 @@ export default function Footer() {
           </div>
 
           {/* Col 2: Industries */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-poppins font-extrabold text-white text-xs uppercase tracking-widest border-l-2 border-accent pl-2.5">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-poppins font-extrabold text-white text-[11px] uppercase tracking-widest border-l-2 border-accent pl-2.5">
               Industries Served
             </h4>
-            <div className="flex flex-col gap-2.5 text-sm">
+            <div className="flex flex-col gap-2 text-xs">
               {industries.slice(0, 6).map((ind) => (
                 <Link
                   key={ind.id}
@@ -115,11 +115,11 @@ export default function Footer() {
           </div>
 
           {/* Col 3: Company Links */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-poppins font-extrabold text-white text-xs uppercase tracking-widest border-l-2 border-accent pl-2.5">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-poppins font-extrabold text-white text-[11px] uppercase tracking-widest border-l-2 border-accent pl-2.5">
               Navigation
             </h4>
-            <div className="flex flex-col gap-2.5 text-sm">
+            <div className="flex flex-col gap-2 text-xs">
               {[
                 { label: "About Story", path: "/about" },
                 { label: "Quality Benchmarks", path: "/quality" },
@@ -155,23 +155,23 @@ export default function Footer() {
 
           {/* Col 4: Address/Contact — hidden on /contact page */}
           {!isContactPage && (
-            <div className="flex flex-col gap-4">
-              <h4 className="font-poppins font-extrabold text-white text-xs uppercase tracking-widest border-l-2 border-accent pl-2.5">
+            <div className="flex flex-col gap-3">
+              <h4 className="font-poppins font-extrabold text-white text-[11px] uppercase tracking-widest border-l-2 border-accent pl-2.5">
                 Contact Details
               </h4>
-              <div className="flex flex-col gap-4 text-xs font-manrope">
+              <div className="flex flex-col gap-3 text-[11px] font-manrope">
                 <div className="flex items-start gap-2.5">
-                  <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
                   <p className="leading-relaxed">
                     {companyDetails.address}
                   </p>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-accent" />
+                  <Phone className="w-3.5 h-3.5 text-accent" />
                   <span>+91 97371 13699</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-accent" />
+                  <Mail className="w-3.5 h-3.5 text-accent" />
                   <span>marutihydraulics09@gmail.com</span>
                 </div>
               </div>
@@ -180,11 +180,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Segment: Copyright & Legal */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
-          <p className="text-xs font-manrope">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-white/5 gap-4">
+          <p className="text-[11px] font-manrope text-white/40">
             © {new Date().getFullYear()} Maruti Hydraulics. All engineering rights reserved. Built in India.
           </p>
-          <div className="flex gap-6 text-xs font-manrope">
+          <div className="flex gap-6 text-[11px] font-manrope">
             <Link to="/privacy-policy" className="hover:text-accent transition-colors">
               Privacy Policy
             </Link>
@@ -195,10 +195,10 @@ export default function Footer() {
           {/* Scroll to Top Trigger */}
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-dark-bg hover:border-accent hover:shadow-[0_0_15px_rgba(0,194,255,0.4)] transition-all cursor-pointer group"
+            className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-dark-bg hover:border-accent hover:shadow-[0_0_15px_rgba(255,107,0,0.4)] transition-all cursor-pointer group"
             aria-label="Scroll back to top"
           >
-            <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+            <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>
       </div>
