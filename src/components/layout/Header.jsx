@@ -128,8 +128,15 @@ export default function Header() {
                   <span className={`relative z-10 transition-colors duration-300 ${pathname === link.path ? 'text-primary font-bold' : ''}`}>
                     {link.label}
                   </span>
-                  <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform duration-300 origin-center ${pathname === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`} />
+                  {pathname === link.path ? (
+                    <motion.div
+                      layoutId="activeUnderline"
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-primary"
+                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                    />
+                  ) : (
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary/30 transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                  )}
                 </Link>
               </motion.div>
             ))}

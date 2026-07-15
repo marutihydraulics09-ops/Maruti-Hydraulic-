@@ -1,6 +1,8 @@
 import React from 'react';
 import { ShieldCheck, Compass, Target, Factory, Shield, Cpu, Users, Award } from 'lucide-react';
 import SEOHeader from '../components/common/SEOHeader';
+import ScrollReveal, { StaggerContainer, StaggerItem } from '../components/ui/ScrollReveal';
+import SplitText from '../components/ui/SplitText';
 
 export default function About() {
   const values = [
@@ -69,17 +71,17 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-12 md:py-24 bg-dark-bg overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 engineering-grid opacity-[0.04] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 text-center space-y-6">
+        <ScrollReveal type="fade-up" duration={0.8} className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 text-center space-y-6">
           <span className="font-poppins font-extrabold text-xs tracking-widest text-accent uppercase">
             Corporate Profile
           </span>
           <h1 className="font-poppins font-black text-4xl md:text-6xl text-white uppercase tracking-tight leading-none">
-            About Maruti Hydraulics
+            <SplitText>About Maruti Hydraulics</SplitText>
           </h1>
           <p className="text-sm md:text-base font-inter text-white/70 max-w-2xl mx-auto leading-relaxed">
             Manufacturer and supplier of premium heavy-duty hydraulic cylinders and power packs, serving global infrastructure, steel, plastic, and earthmoving fields.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Company Story & Facility */}
@@ -87,7 +89,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Story text */}
-          <div className="lg:col-span-7 space-y-6">
+          <ScrollReveal type="fade-right" duration={0.8} className="lg:col-span-7 space-y-6">
             <h2 className="font-poppins font-black text-2xl md:text-4xl text-white uppercase tracking-tight">
               Our Journey of Precision
             </h2>
@@ -111,10 +113,10 @@ export default function About() {
                 <p className="text-xs text-white/50 uppercase tracking-widest mt-1">Industries Fed</p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Facility Mock Box */}
-          <div className="lg:col-span-5 relative">
+          <ScrollReveal type="fade-left" duration={0.8} delay={0.15} className="lg:col-span-5 relative">
             <div className="absolute inset-0 bg-accent/5 rounded-3xl blur-2xl"></div>
             <div className="glass-panel p-8 rounded-3xl border border-white/10 relative z-10 space-y-6">
               <Factory className="w-12 h-12 text-accent" />
@@ -130,16 +132,16 @@ export default function About() {
                 <p className="text-white/80"><strong>Testing limit:</strong> Hydrostatic test limit up to 345 bar</p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
       </section>
 
       {/* Vision & Mission — 2 columns on mobile for clean dashboard/app feel */}
       <section className="py-12 md:py-24 bg-dark-bg relative border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-8">
+        <StaggerContainer className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-8">
           {/* Vision */}
-          <div className="glass-panel p-4 sm:p-10 rounded-xl sm:rounded-3xl border border-white/5 relative overflow-hidden group hover:border-accent/30 transition-all">
+          <StaggerItem type="fade-up" className="glass-panel p-4 sm:p-10 rounded-xl sm:rounded-3xl border border-white/5 relative overflow-hidden group hover:border-accent/30 transition-all">
             <div className="absolute -top-10 -right-10 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 rounded-full blur-3xl"></div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start">
               <div className="p-2 sm:p-3 bg-accent/15 border border-accent/20 rounded-lg sm:rounded-xl text-accent flex-shrink-0">
@@ -154,10 +156,10 @@ export default function About() {
                 </p>
               </div>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* Mission */}
-          <div className="glass-panel p-4 sm:p-10 rounded-xl sm:rounded-3xl border border-white/5 relative overflow-hidden group hover:border-orange-accent/30 transition-all">
+          <StaggerItem type="fade-up" className="glass-panel p-4 sm:p-10 rounded-xl sm:rounded-3xl border border-white/5 relative overflow-hidden group hover:border-orange-accent/30 transition-all">
             <div className="absolute -top-10 -right-10 w-24 h-24 sm:w-32 sm:h-32 bg-orange-accent/5 rounded-full blur-3xl"></div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start">
               <div className="p-2 sm:p-3 bg-orange-accent/15 border border-orange-accent/20 rounded-lg sm:rounded-xl text-orange-accent flex-shrink-0">
@@ -172,15 +174,15 @@ export default function About() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* Core Values (from brochure) — 2 columns on mobile */}
       <section className="py-12 md:py-24 bg-dark-bg relative border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
 
-          <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
+          <ScrollReveal type="fade-up" className="text-center max-w-xl mx-auto mb-16 space-y-4">
             <span className="font-poppins font-extrabold text-xs tracking-widest text-accent uppercase">
               Ethos & Pillars
             </span>
@@ -190,12 +192,13 @@ export default function About() {
             <p className="text-sm font-inter text-white/60">
               The fundamental guidelines that drive our quality metrics, machine floor safety, and customer support.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
             {values.map((val, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                type="scale-in"
                 className="glass-panel p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-white/5 hover:border-accent/20 transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="space-y-3 sm:space-y-4">
@@ -209,9 +212,9 @@ export default function About() {
                     {val.desc}
                   </p>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>
@@ -220,7 +223,7 @@ export default function About() {
       <section className="py-12 md:py-24 bg-dark-bg relative border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
 
-          <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
+          <ScrollReveal type="fade-up" className="text-center max-w-xl mx-auto mb-16 space-y-4">
             <span className="font-poppins font-extrabold text-xs tracking-widest text-accent uppercase">
               Quality Assurance
             </span>
@@ -230,12 +233,13 @@ export default function About() {
             <p className="text-sm font-inter text-white/60">
               Before leaving our assembly floor, every cylinder undergoes rigorous calibration and validation testing.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
             {testingProtocols.map((protocol, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
+                type="fade-up"
                 className={`glass-panel p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-white/5 relative group hover:border-accent/20 transition-all duration-300 ${
                   idx === 2 ? 'col-span-2 md:col-span-1' : 'col-span-1'
                 }`}
@@ -250,9 +254,9 @@ export default function About() {
                 <p className="text-[10px] sm:text-xs text-white/60 leading-relaxed font-inter line-clamp-5 sm:line-clamp-none">
                   {protocol.desc}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>

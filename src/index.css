@@ -85,11 +85,11 @@ input, textarea, [contenteditable="true"] {
 
 /* Glow effects */
 .glow-text-cyan {
-  text-shadow: 0 0 10px rgba(0, 194, 255, 0.5);
+  filter: drop-shadow(0 0 8px rgba(0, 194, 255, 0.45));
 }
 
 .glow-text-orange {
-  text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+  filter: drop-shadow(0 0 8px rgba(255, 107, 0, 0.45));
 }
 
 .glow-btn-cyan {

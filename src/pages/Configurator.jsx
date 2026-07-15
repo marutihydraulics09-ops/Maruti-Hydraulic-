@@ -296,7 +296,7 @@ Please review the drawing design stages and provide availability details.`;
           </div>
 
           <h1 className="font-poppins font-black text-2xl sm:text-3xl lg:text-4xl text-white uppercase tracking-tight leading-tight">
-            Cylinder <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary glow-text-orange">Configurator</span>
+            Cylinder <span className="inline-block drop-shadow-[0_0_8px_rgba(255,107,0,0.35)]"><span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Configurator</span></span>
           </h1>
 
           <p className="text-xs md:text-sm text-white/60 max-w-xl mx-auto leading-relaxed">

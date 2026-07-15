@@ -14,6 +14,9 @@ import SEOHeader from '../components/common/SEOHeader';
 import CylinderSchematic from '../components/ui/CylinderSchematic';
 import Accordion from '../components/ui/Accordion';
 import TiltCard from '../components/ui/TiltCard';
+import ScrollReveal, { StaggerContainer, StaggerItem } from '../components/ui/ScrollReveal';
+import SplitText from '../components/ui/SplitText';
+import Magnetic from '../components/ui/Magnetic';
 import {
   statistics, products, industries, processSteps, whyChooseUs,
   faqs, testimonials
@@ -132,23 +135,26 @@ export default function Home() {
               </span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="font-poppins font-black text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight leading-[1.05] mb-6"
-            >
-              Heavy Duty <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary glow-text-orange">
-                Hydraulic Cylinder
+            <h1 className="font-poppins font-black text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight leading-[1.05] mb-6">
+              <SplitText>Heavy Duty</SplitText> <br />
+              <span className="inline-block overflow-hidden py-[0.05em] drop-shadow-[0_0_8px_rgba(255,107,0,0.35)]">
+                <motion.span
+                  initial={{ y: '110%' }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary inline-block font-black"
+                >
+                  Hydraulic Cylinder
+                </motion.span>
               </span> <br />
-              Manufacturer
-            </motion.h1>
+              <SplitText delay={0.3}>Manufacturer</SplitText>
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.45 }}
               className="text-sm md:text-base font-inter text-white/70 max-w-lg leading-relaxed mb-8"
             >
               Precision-engineered hydraulic cylinders and power packs designed to survive severe pressures, extreme heat, and continuous shock load applications. Engineered to match global standard layouts.
@@ -157,24 +163,29 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <Link
-                to="/products"
-                className="bg-accent text-dark-bg font-manrope font-extrabold tracking-widest text-xs uppercase px-7 py-4 rounded-xl hover:bg-orange-600 transition-all glow-btn-orange flex items-center gap-2 group"
-              >
-                Explore Products
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a
-                href="/Maruti Hydraulic Brochure.pdf"
-                download="Maruti_Hydraulic_Brochure.pdf"
-                className="bg-white/5 border border-white/10 hover:border-accent text-white hover:text-accent font-manrope font-extrabold tracking-widest text-xs uppercase px-7 py-4 rounded-xl transition-all flex items-center gap-2 group cursor-pointer"
-              >
-                <Download className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
-                Download Brochure
-              </a>
+              <Magnetic>
+                <Link
+                  to="/products"
+                  className="bg-accent text-dark-bg font-manrope font-extrabold tracking-widest text-xs uppercase px-7 py-4 rounded-xl hover:bg-orange-600 transition-all glow-btn-orange flex items-center gap-2 group"
+                >
+                  Explore Products
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Magnetic>
+
+              <Magnetic>
+                <a
+                  href="/Maruti Hydraulic Brochure.pdf"
+                  download="Maruti_Hydraulic_Brochure.pdf"
+                  className="bg-white/5 border border-white/10 hover:border-accent text-white hover:text-accent font-manrope font-extrabold tracking-widest text-xs uppercase px-7 py-4 rounded-xl transition-all flex items-center gap-2 group cursor-pointer"
+                >
+                  <Download className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                  Download Brochure
+                </a>
+              </Magnetic>
             </motion.div>
           </div>
 
@@ -197,7 +208,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Intro Text */}
-            <div className="lg:col-span-6 space-y-6">
+            <ScrollReveal type="fade-right" className="lg:col-span-6 space-y-6">
               <span className="font-poppins font-extrabold text-xs tracking-widest text-accent uppercase">
                 ISO Ready Engineering
               </span>
@@ -213,12 +224,16 @@ export default function Home() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                 </Link>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Stats Card list */}
-            <div ref={statsRef} className="lg:col-span-6 grid grid-cols-2 gap-6">
+            <StaggerContainer ref={statsRef} className="lg:col-span-6 grid grid-cols-2 gap-6">
               {statistics.map((stat, idx) => (
-                <div key={idx} className="glass-panel p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-accent/30 transition-all duration-300">
+                <StaggerItem
+                  key={idx}
+                  type="scale-in"
+                  className="glass-panel p-6 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-accent/30 transition-all duration-300"
+                >
                   <div className="absolute -top-10 -right-10 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500 blur-xl"></div>
                   <div className="font-poppins font-black text-3xl md:text-4xl text-accent">
                     {statsInView ? <CountUp end={parseInt(stat.value)} duration={2.5} suffix={stat.value.includes('+') ? '+' : ''} /> : "0"}
@@ -229,9 +244,9 @@ export default function Home() {
                   <p className="text-xs text-white/50 mt-1 font-inter">
                     {stat.description}
                   </p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
 
         </div>
@@ -241,7 +256,7 @@ export default function Home() {
       <section className="py-12 md:py-24 bg-dark-bg relative border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
 
-          <div className="text-center max-w-xl mx-auto mb-8 sm:mb-16 space-y-3 sm:space-y-4">
+          <ScrollReveal type="fade-up" className="text-center max-w-xl mx-auto mb-8 sm:mb-16 space-y-3 sm:space-y-4">
             <span className="font-poppins font-extrabold text-xs tracking-widest text-accent uppercase">
               Product Portfolio
             </span>
@@ -251,14 +266,14 @@ export default function Home() {
             <p className="text-xs sm:text-sm font-inter text-white/60">
               Select standard designs or customize physical sizing to match your specific force and space targets.
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* Products Grid — 2 columns on mobile, 2 on tablet, 3 on desktop */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
             {products.map((prod) => (
               prod.id === 'custom-cylinders' ? (
                 /* ── CUSTOM CYLINDERS — full-width horizontal banner ── */
-                <div key={prod.id} className="col-span-2 md:col-span-2 lg:col-span-3">
+                <StaggerItem key={prod.id} type="fade-up" className="col-span-2 md:col-span-2 lg:col-span-3">
                   <TiltCard className="h-full">
                     <div className="glass-panel rounded-xl sm:rounded-2xl overflow-hidden group hover:border-accent/40 transition-all duration-300 relative flex flex-row min-h-[120px] sm:min-h-[280px]">
 
@@ -327,59 +342,61 @@ export default function Home() {
 
                     </div>
                   </TiltCard>
-                </div>
+                </StaggerItem>
               ) : (
                 /* ── STANDARD product card ── */
-                <TiltCard key={prod.id} className="h-full">
-                  <div className="glass-panel rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col justify-between group hover:border-accent/20 transition-all duration-300">
+                <StaggerItem key={prod.id} type="fade-up">
+                  <TiltCard className="h-full">
+                    <div className="glass-panel rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col justify-between group hover:border-accent/20 transition-all duration-300">
 
-                    {/* Image container */}
-                    <div className="h-32 sm:h-48 overflow-hidden relative bg-black">
-                      <img
-                        src={prod.image}
-                        alt={prod.name}
-                        className="w-full h-full object-contain scale-[1.12] group-hover:scale-[1.18] transition-transform duration-500"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark-bg to-transparent opacity-80"></div>
-                      <span className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-orange-accent text-white font-manrope font-extrabold text-[8px] sm:text-[10px] tracking-wider uppercase px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded">
-                        ISO
-                      </span>
-                    </div>
-
-                    {/* Body text details */}
-                    <div className="p-3 sm:p-6 flex-grow flex flex-col justify-between space-y-3 sm:space-y-6">
-                      <div className="space-y-1.5 sm:space-y-3">
-                        <h3 className="font-poppins font-bold text-[11px] sm:text-lg text-white group-hover:text-accent transition-colors leading-tight">
-                          {prod.name}
-                        </h3>
-                        <p className="hidden sm:block text-xs text-white/60 line-clamp-3 leading-relaxed">
-                          {prod.shortDescription}
-                        </p>
-
-                        {/* Short specs bullet */}
-                        <div className="pt-2 border-t border-white/5 space-y-1">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-0.5 text-[9px] sm:text-[11px] font-manrope text-white/50">
-                            <p>Bore: {prod.specifications.boreDia.replace(" to ", "-")}</p>
-                            <p>P: {formatPressure(prod.specifications.pressure)}</p>
-                          </div>
-                        </div>
+                      {/* Image container */}
+                      <div className="h-32 sm:h-48 overflow-hidden relative bg-black">
+                        <img
+                          src={prod.image}
+                          alt={prod.name}
+                          className="w-full h-full object-contain scale-[1.12] group-hover:scale-[1.18] transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg to-transparent opacity-80"></div>
+                        <span className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-orange-accent text-white font-manrope font-extrabold text-[8px] sm:text-[10px] tracking-wider uppercase px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded">
+                          ISO
+                        </span>
                       </div>
 
-                      <Link
-                        to={`/products/${prod.id}`}
-                        className="bg-accent/10 border border-accent/20 text-accent w-full text-center font-manrope font-extrabold text-[9px] sm:text-xs uppercase tracking-wider py-2 sm:py-3.5 rounded-lg sm:rounded-xl hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all flex items-center justify-center gap-1"
-                      >
-                        <span className="hidden sm:inline">Technical </span>Specs
-                        <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                      </Link>
-                    </div>
+                      {/* Body text details */}
+                      <div className="p-3 sm:p-6 flex-grow flex flex-col justify-between space-y-3 sm:space-y-6">
+                        <div className="space-y-1.5 sm:space-y-3">
+                          <h3 className="font-poppins font-bold text-[11px] sm:text-lg text-white group-hover:text-accent transition-colors leading-tight">
+                            {prod.name}
+                          </h3>
+                          <p className="hidden sm:block text-xs text-white/60 line-clamp-3 leading-relaxed">
+                            {prod.shortDescription}
+                          </p>
 
-                  </div>
-                </TiltCard>
+                          {/* Short specs bullet */}
+                          <div className="pt-2 border-t border-white/5 space-y-1">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-0.5 text-[9px] sm:text-[11px] font-manrope text-white/50">
+                              <p>Bore: {prod.specifications.boreDia.replace(" to ", "-")}</p>
+                              <p>P: {formatPressure(prod.specifications.pressure)}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <Link
+                          to={`/products/${prod.id}`}
+                          className="bg-accent/10 border border-accent/20 text-accent w-full text-center font-manrope font-extrabold text-[9px] sm:text-xs uppercase tracking-wider py-2 sm:py-3.5 rounded-lg sm:rounded-xl hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all flex items-center justify-center gap-1"
+                        >
+                          <span className="hidden sm:inline">Technical </span>Specs
+                          <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                        </Link>
+                      </div>
+
+                    </div>
+                  </TiltCard>
+                </StaggerItem>
               )
             ))}
-          </div>
+          </StaggerContainer>
 
         </div>
       </section>

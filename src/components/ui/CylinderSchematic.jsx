@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 /**
  * CylinderSchematic Component
@@ -396,11 +397,14 @@ export default function CylinderSchematic({
         <line x1={X_barrel_end} y1="50" x2={X_barrel_end} y2="250" stroke="#FF6B00" strokeWidth="0.5" strokeDasharray="6,4" opacity="0.2" />
 
         {/* Dimension markings - Stroke */}
-        <path 
+        <motion.path 
           d={`M ${X_barrel_start} 45 L ${X_barrel_start} 35 M ${X_barrel_end} 45 L ${X_barrel_end} 35 M ${X_barrel_start} 40 L ${X_barrel_end} 40`} 
           stroke="#FF6B00" strokeWidth="1" opacity="0.55" fill="none"
           className="cursor-pointer"
           onClick={onSizesClick}
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
         />
         <text 
           x={(X_barrel_start + X_barrel_end) / 2} y="32" 
@@ -421,7 +425,7 @@ export default function CylinderSchematic({
         {/* Cylinder Barrel Main body (Double border for High Pressure) */}
         <g className="cursor-pointer" onClick={onTypeClick} title="Cylinder Barrel - Click to edit type">
           {/* Main barrel structure */}
-          <rect 
+          <motion.rect 
             x={X_barrel_start} 
             y={Y_center - H_barrel/2} 
             width={W_barrel} 
@@ -431,6 +435,9 @@ export default function CylinderSchematic({
             stroke={isHighPressure ? "#FF3B00" : "#FF6B00"} 
             strokeWidth={barrelStrokeWidth} 
             className="transition-all duration-300"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.4, ease: "easeInOut", delay: 0.2 }}
           />
           {/* Double wall interior line rendering for high pressure indicator */}
           {isHighPressure && (
@@ -454,7 +461,12 @@ export default function CylinderSchematic({
         {renderFrontMount()}
 
         {/* Front Gland End cap collar */}
-        <rect x={X_barrel_end - 15} y={Y_center - H_barrel/2} width="15" height={H_barrel} rx="1" fill="#0D1117" stroke="#FF6B00" strokeWidth="2" />
+        <motion.rect 
+          x={X_barrel_end - 15} y={Y_center - H_barrel/2} width="15" height={H_barrel} rx="1" fill="#0D1117" stroke="#FF6B00" strokeWidth="2" 
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.2, ease: "easeInOut", delay: 0.4 }}
+        />
 
         {/* Cylinder Types additions */}
         {renderCylinderTypeDetails()}
