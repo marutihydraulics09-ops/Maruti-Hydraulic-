@@ -34,7 +34,7 @@ function AppContent() {
     <SmoothScrollWrapper>
       <div className="flex flex-col min-h-screen bg-dark-bg text-white/90">
         <Header />
-        <main className="flex-grow overflow-hidden">
+        <main className="flex-grow overflow-x-clip">
           <Suspense fallback={<SkeletonLoader />}>
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>

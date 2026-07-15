@@ -306,11 +306,11 @@ Please review the drawing design stages and provide availability details.`;
       </section>
 
       {/* Main Configurator Workspace */}
-      <section ref={tabsAnchorRef} className="py-8 bg-dark-bg">
+      <section ref={tabsAnchorRef} className="bg-dark-bg pt-8 pb-24">
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 lg:items-start gap-4">
 
-          {/* VISUALIZER (HUD Blueprint) — order 1 on mobile: sticks to top */}
-          <div className="order-1 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:sticky lg:top-24 z-30 sticky top-[66px] bg-dark-bg/95 backdrop-blur-md pb-2 pt-1 lg:bg-transparent lg:pb-0 lg:pt-0 lg:z-10 border-b border-white/5 lg:border-none">
+          {/* VISUALIZER (HUD Blueprint) — pure CSS sticky (lag-free, GPU composited) */}
+          <div className="order-1 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 z-30 sticky top-[66px] bg-dark-bg/95 backdrop-blur-md pb-2 pt-1 lg:top-24 lg:self-start lg:bg-transparent lg:backdrop-blur-none lg:pb-0 lg:pt-0 lg:z-10 border-b border-white/5 lg:border-none">
               <div className="glass-panel p-2 sm:p-3 rounded-xl md:rounded-2xl lg:rounded-3xl border border-white/10 relative overflow-hidden flex flex-col items-center shadow-2xl">
                 <div className="absolute top-2 left-2.5 flex items-center gap-1.5 z-10 bg-dark-bg/40 px-2 py-0.5 rounded backdrop-blur">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
