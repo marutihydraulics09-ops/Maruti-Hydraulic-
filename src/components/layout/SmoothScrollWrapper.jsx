@@ -10,6 +10,16 @@ export default function SmoothScrollWrapper({ children }) {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Detect mobile or touch devices to disable scroll hijacking/jank
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                     (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches);
+
+    if (isMobile) {
+      window.lenis = null;
+      ScrollTrigger.refresh();
+      return;
+    }
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.5,
