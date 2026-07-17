@@ -352,8 +352,9 @@ export default function Header({ isOpen: propIsOpen, setIsOpen: propSetIsOpen })
                   variants={containerVariants}
                   className="flex-1 px-6 py-6 flex flex-col gap-1"
                 >
-                  {NAV_LINKS.map((link) => {
+                  {NAV_LINKS.filter(link => link.label !== "Simulator").map((link, idx) => {
                     const isActive = pathname === link.path;
+                    const displayNum = String(idx + 1).padStart(2, '0');
                     return (
                       <motion.div key={link.label} variants={itemVariants}>
                         <Link
@@ -366,7 +367,7 @@ export default function Header({ isOpen: propIsOpen, setIsOpen: propSetIsOpen })
                         >
                           <span className={`font-manrope font-black text-[10px] tracking-widest transition-colors duration-200 ${isActive ? 'text-[#FF6B00]' : 'text-white/20 group-hover:text-white/40'
                             }`}>
-                            {link.num}
+                            {displayNum}
                           </span>
                           <span className={`w-1 h-1 rounded-full flex-shrink-0 transition-colors duration-200 ${isActive ? 'bg-[#FF6B00]' : 'bg-white/15 group-hover:bg-white/30'
                             }`} />
