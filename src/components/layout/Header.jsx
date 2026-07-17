@@ -9,9 +9,10 @@ const NAV_LINKS = [
   { label: "About", path: "/about", num: "02" },
   { label: "Products", path: "/products", num: "03" },
   { label: "Configurator", path: "/configurator", num: "04" },
-  { label: "Industries", path: "/industries", num: "05" },
-  { label: "Quality", path: "/quality", num: "06" },
-  { label: "Contact", path: "/contact", num: "07" },
+  { label: "Simulator", path: "/simulator", num: "05" },
+  { label: "Industries", path: "/industries", num: "06" },
+  { label: "Quality", path: "/quality", num: "07" },
+  { label: "Contact", path: "/contact", num: "08" },
 ];
 
 // Stagger container
@@ -53,21 +54,21 @@ const drawerVariants = {
 // Each nav item slides in smoothly from the right
 const itemVariants = {
   hidden: { opacity: 0, x: 20 },
-  show: { 
-    opacity: 1, 
-    x: 0, 
-    transition: { 
-      duration: 0.4, 
-      ease: [0.32, 0.72, 0, 1] 
-    } 
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.32, 0.72, 0, 1]
+    }
   },
-  exit: { 
-    opacity: 0, 
-    x: 10, 
-    transition: { 
-      duration: 0.25, 
-      ease: [0.32, 0.72, 0, 1] 
-    } 
+  exit: {
+    opacity: 0,
+    x: 10,
+    transition: {
+      duration: 0.25,
+      ease: [0.32, 0.72, 0, 1]
+    }
   }
 };
 
@@ -103,8 +104,8 @@ export default function Header({ isOpen: propIsOpen, setIsOpen: propSetIsOpen })
       >
         <div
           className={`max-w-7xl mx-auto relative overflow-hidden pointer-events-auto transition-all duration-500 ease-in-out ${scrolled
-              ? 'bg-white/95 backdrop-blur-md py-2.5 px-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-slate-200/80'
-              : 'bg-white py-4.5 px-8 rounded-[24px] shadow-[0_10px_35px_-15px_rgba(0,0,0,0.04)] border border-slate-100/90'
+            ? 'bg-white/95 backdrop-blur-md py-2.5 px-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-slate-200/80'
+            : 'bg-white py-4.5 px-8 rounded-[24px] shadow-[0_10px_35px_-15px_rgba(0,0,0,0.04)] border border-slate-100/90'
             } flex justify-between items-center z-10`}
         >
           {/* Logo */}
@@ -117,32 +118,95 @@ export default function Header({ isOpen: propIsOpen, setIsOpen: propSetIsOpen })
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {NAV_LINKS.map((link, idx) => (
-              <motion.div
-                key={link.label}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 + idx * 0.04, ease: 'easeOut' }}
-              >
-                <Link
-                  to={link.path}
-                  className="relative font-manrope font-semibold text-[13.5px] uppercase tracking-wider py-2 transition-colors duration-300 text-slate-700 hover:text-primary group block"
+            {NAV_LINKS.map((link, idx) => {
+              const isSimulator = link.label === "Simulator";
+              const isActive = pathname === link.path;
+
+              if (isSimulator) {
+                return (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 + idx * 0.04, ease: 'easeOut' }}
+                    className="flex items-center"
+                  >
+                    <style>{`
+                      @keyframes gaugeNeedle {
+                        0%, 100% { transform: rotate(0deg); }
+                        50% { transform: rotate(15deg); }
+                      }
+                      .animate-gauge-needle {
+                        animation: gaugeNeedle 1.8s ease-in-out infinite;
+                        transform-origin: 12px 14px;
+                      }
+                      .animate-gauge-needle-fast {
+                        animation: gaugeNeedle 0.8s ease-in-out infinite;
+                        transform-origin: 12px 14px;
+                      }
+                    `}</style>
+                    <Link
+                      to={link.path}
+                      title="Live Simulator Console"
+                      className={`relative w-8 h-8 rounded-full transition-all duration-300 flex items-center justify-center border ${
+                        isActive
+                          ? 'bg-slate-950 border-primary text-primary shadow-[0_0_12px_rgba(255,107,0,0.35),inset_0_1px_0_rgba(255,107,0,0.15)]'
+                          : 'bg-slate-50 border-slate-200/80 text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5 hover:shadow-[0_2px_8px_rgba(255,107,0,0.1)]'
+                      }`}
+                    >
+                      <svg
+                        className="w-4.5 h-4.5 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        {/* Dial scale */}
+                        <path d="M3.34 19a10 10 0 1 1 17.32 0" opacity={isActive ? "1" : "0.7"} />
+                        {/* Needle pin */}
+                        <circle cx="12" cy="14" r="1.5" fill="currentColor" />
+                        {/* Oscillating needle */}
+                        <path
+                          className={isActive ? "animate-gauge-needle-fast" : "animate-gauge-needle"}
+                          d="m12 14 4-4"
+                          stroke={isActive ? "#ff8c00" : "currentColor"}
+                        />
+                      </svg>
+                    </Link>
+                  </motion.div>
+                );
+              }
+
+              return (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.2 + idx * 0.04, ease: 'easeOut' }}
                 >
-                  <span className={`relative z-10 transition-colors duration-300 ${pathname === link.path ? 'text-primary font-bold' : ''}`}>
-                    {link.label}
-                  </span>
-                  {pathname === link.path ? (
-                    <motion.div
-                      layoutId="activeUnderline"
-                      className="absolute bottom-0 left-0 w-full h-[2px] bg-primary"
-                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                    />
-                  ) : (
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary/30 transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
-                  )}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    to={link.path}
+                    className="relative font-manrope font-semibold text-[13.5px] uppercase tracking-wider py-2 transition-colors duration-300 text-slate-700 hover:text-primary group block"
+                  >
+                    <span className={`relative z-10 transition-colors duration-300 ${pathname === link.path ? 'text-primary font-bold' : ''}`}>
+                      {link.label}
+                    </span>
+                    {pathname === link.path ? (
+                      <motion.div
+                        layoutId="activeUnderline"
+                        className="absolute bottom-0 left-0 w-full h-[2px] rounded-full bg-primary"
+                        style={{ boxShadow: '0 0 4px rgba(255,107,0,0.6)' }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                      />
+                    ) : (
+                      <span className="absolute bottom-0 left-0 w-full h-[2px] rounded-full bg-primary/20 transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA */}
@@ -159,32 +223,67 @@ export default function Header({ isOpen: propIsOpen, setIsOpen: propSetIsOpen })
             </Link>
           </div>
 
-          {/* Hamburger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden z-50 p-2 focus:outline-none flex items-center justify-center"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-            aria-controls="mobile-nav"
-          >
-            {/* Morphing icon */}
-            <svg className="w-6 h-6 fill-current text-slate-800" viewBox="0 0 24 24">
-              <motion.rect x="3" y="5" width="18" height="2" rx="1"
-                animate={isOpen ? { rotate: 45, y: 6, x: 2 } : { rotate: 0, y: 0, x: 0 }}
-                transition={{ duration: 0.3 }}
-                style={{ originX: '12px', originY: '6px' }}
-              />
-              <motion.rect x="3" y="11" width="18" height="2" rx="1"
-                animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.2 }}
-              />
-              <motion.rect x="3" y="17" width="18" height="2" rx="1"
-                animate={isOpen ? { rotate: -45, y: -6, x: 2 } : { rotate: 0, y: 0, x: 0 }}
-                transition={{ duration: 0.3 }}
-                style={{ originX: '12px', originY: '18px' }}
-              />
-            </svg>
-          </button>
+          {/* Right side controls: Mobile Simulator + Hamburger */}
+          <div className="flex items-center gap-3 lg:hidden z-50">
+            {/* Mobile Simulator Icon Button */}
+            <Link
+              to="/simulator"
+              title="Live Simulator Console"
+              className={`relative w-8 h-8 rounded-full transition-all duration-300 flex items-center justify-center border ${
+                pathname === '/simulator'
+                  ? 'bg-slate-950 border-primary text-primary shadow-[0_0_12px_rgba(255,107,0,0.35),inset_0_1px_0_rgba(255,107,0,0.15)]'
+                  : 'bg-slate-50 border-slate-200/80 text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5 hover:shadow-[0_2px_8px_rgba(255,107,0,0.1)]'
+              }`}
+            >
+              <svg
+                className="w-4.5 h-4.5 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* Dial scale */}
+                <path d="M3.34 19a10 10 0 1 1 17.32 0" opacity={pathname === '/simulator' ? "1" : "0.7"} />
+                {/* Needle pin */}
+                <circle cx="12" cy="14" r="1.5" fill="currentColor" />
+                {/* Oscillating needle */}
+                <path
+                  className={pathname === '/simulator' ? "animate-gauge-needle-fast" : "animate-gauge-needle"}
+                  d="m12 14 4-4"
+                  stroke={pathname === '/simulator' ? "#ff8c00" : "currentColor"}
+                />
+              </svg>
+            </Link>
+
+            {/* Hamburger */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 focus:outline-none flex items-center justify-center"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
+            >
+              {/* Morphing icon */}
+              <svg className="w-6 h-6 fill-current text-slate-800" viewBox="0 0 24 24">
+                <motion.rect x="3" y="5" width="18" height="2" rx="1"
+                  animate={isOpen ? { rotate: 45, y: 6, x: 2 } : { rotate: 0, y: 0, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ originX: '12px', originY: '6px' }}
+                />
+                <motion.rect x="3" y="11" width="18" height="2" rx="1"
+                  animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.rect x="3" y="17" width="18" height="2" rx="1"
+                  animate={isOpen ? { rotate: -45, y: -6, x: 2 } : { rotate: 0, y: 0, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ originX: '12px', originY: '18px' }}
+                />
+              </svg>
+            </button>
+          </div>
 
           {/* Accent line */}
           <div className={`absolute bottom-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-primary via-accent to-primary overflow-hidden ${scrolled ? 'rounded-b-2xl' : 'rounded-b-[24px]'}`}>
@@ -261,8 +360,8 @@ export default function Header({ isOpen: propIsOpen, setIsOpen: propSetIsOpen })
                           to={link.path}
                           onClick={() => setIsOpen(false)}
                           className={`group flex items-center gap-4 py-3 px-4 rounded-xl transition-all duration-200 ${isActive
-                              ? 'bg-[#FF6B00]/10 border border-[#FF6B00]/25'
-                              : 'border border-transparent hover:bg-white/[0.03] hover:border-white/[0.07]'
+                            ? 'bg-[#FF6B00]/10 border border-[#FF6B00]/25'
+                            : 'border border-transparent hover:bg-white/[0.03] hover:border-white/[0.07]'
                             }`}
                         >
                           <span className={`font-manrope font-black text-[10px] tracking-widest transition-colors duration-200 ${isActive ? 'text-[#FF6B00]' : 'text-white/20 group-hover:text-white/40'

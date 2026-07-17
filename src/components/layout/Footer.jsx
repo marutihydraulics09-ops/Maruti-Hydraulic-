@@ -124,6 +124,7 @@ export default function Footer() {
                 { label: "About Story", path: "/about" },
                 { label: "Quality Benchmarks", path: "/quality" },
                 { label: "Cylinder Configurator", path: "/configurator" },
+                { label: "Live Simulator", path: "/simulator" },
                 { label: "Projects Case Studies", path: "/projects" },
                 { label: "Knowledge Blog", path: "/blog" },
                 { label: "Download Brochure", path: "/Maruti Hydraulic Brochure.pdf", isStatic: true }

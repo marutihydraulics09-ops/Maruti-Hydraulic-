@@ -20,6 +20,7 @@ import Quality from './pages/Quality';
 import Projects from './pages/Projects';
 import Blog from './pages/Blog';
 import Configurator from './pages/Configurator';
+import Simulator from './pages/Simulator';
 
 import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -45,6 +46,7 @@ function AppContent() {
               <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
               <Route path="/products/:productId" element={<PageTransition><ProductDetails /></PageTransition>} />
               <Route path="/configurator" element={<PageTransition><Configurator /></PageTransition>} />
+              <Route path="/simulator" element={<PageTransition><Simulator /></PageTransition>} />
               <Route path="/industries" element={<PageTransition><Industries /></PageTransition>} />
               <Route path="/quality" element={<PageTransition><Quality /></PageTransition>} />
               <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
@@ -57,7 +59,7 @@ function AppContent() {
             </Routes>
           </AnimatePresence>
         </main>
-        <Footer />
+        {location.pathname !== '/simulator' && <Footer />}
         <ToastContainer
           position="bottom-right"
           theme="dark"

@@ -112,9 +112,7 @@ input, textarea, [contenteditable="true"] {
 
 /* Glassmorphism panels */
 .glass-panel {
-  background: rgba(21, 26, 34, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #111111;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
