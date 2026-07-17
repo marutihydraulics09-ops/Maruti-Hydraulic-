@@ -1731,20 +1731,19 @@ SYSTEM HEALTH:
 
 
             {/* Visual Legend for Normal Users */}
-            <div className="w-full mt-3 grid grid-cols-3 gap-2 px-2 py-2 rounded-xl bg-white/[0.02] border border-white/5 font-mono text-[9px] text-white/60">
+            <div className="w-full mt-3 flex flex-wrap items-center justify-center sm:justify-around gap-x-6 gap-y-2 px-3 py-2 rounded-xl bg-white/[0.02] border border-white/5 font-mono text-[10px] sm:text-[9px] text-white/60">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-1.5 rounded bg-[#ff1100] shadow-[0_0_8px_rgba(255,17,0,0.5)] shrink-0" />
-                <span>🔴 High Pressure (Supply)</span>
+                <span>High Pressure (Supply)</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-1.5 rounded bg-[#ff8c00] shrink-0" />
-                <span>🟠 Low Pressure (Return)</span>
+                <span>Low Pressure (Return)</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-1.5 rounded border border-dashed border-white shrink-0" />
-                <span>⚪ Oil Flow (Pipes)</span>
+                <span>Oil Flow (Pipes)</span>
               </div>
-
             </div>
 
             {/* Dynamic Bottom Information Panel [Feature 49] */}
