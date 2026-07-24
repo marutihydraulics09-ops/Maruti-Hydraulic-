@@ -292,135 +292,173 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          {/* Products Grid — 2 columns on mobile, 2 on tablet, 3 on desktop */}
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-            {products.map((prod) => (
-              prod.id === 'custom-cylinders' ? (
-                /* ── CUSTOM CYLINDERS — full-width horizontal banner ── */
-                <StaggerItem key={prod.id} type="fade-up" className="col-span-2 md:col-span-2 lg:col-span-3">
+          {/* Products Bento Grid — 1 big + 2 small */}
+          {(() => {
+            const featuredProduct = products.find(p => p.id === 'tie-rod-cylinders');
+            const smallProducts = [
+              products.find(p => p.id === 'plunger-cylinders'),
+              products.find(p => p.id === 'welded-cylinders'),
+            ].filter(Boolean);
+
+            return (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-stretch">
+
+                {/* ── BIG FEATURED CARD (Left, 7/12 cols) ── */}
+                <ScrollReveal type="fade-right" className="lg:col-span-7">
                   <TiltCard className="h-full">
-                    <div className="glass-panel rounded-xl sm:rounded-2xl overflow-hidden group hover:border-accent/40 transition-all duration-300 relative flex flex-row min-h-[120px] sm:min-h-[280px]">
+                    <div className="glass-panel rounded-2xl overflow-hidden h-full flex flex-col group hover:border-accent/30 transition-all duration-500 relative">
 
-                      {/* LEFT — animated visual panel — compact on mobile */}
-                      <div className="w-[90px] sm:w-2/5 lg:w-2/5 relative overflow-hidden flex-shrink-0 min-h-[120px] sm:min-h-[220px] lg:min-h-0">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a00] via-[#0d0d0d] to-[#001a1a]" />
-                        {/* Rotating conic glow */}
-                        <div className="absolute inset-0 opacity-50"
-                          style={{ background: 'conic-gradient(from 0deg at 50% 50%, #FF6B00 0%, transparent 25%, #00C2FF 50%, transparent 75%, #FF6B00 100%)', animation: 'spin 10s linear infinite', filter: 'blur(30px)' }} />
-                        {/* Engineering grid */}
-                        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,107,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,255,0.5) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-
-                        {/* Central icon cluster */}
-                        <div className="absolute inset-0 flex items-center justify-center gap-3 sm:gap-8 z-10">
-                          <Settings className="hidden sm:block w-8 h-8 sm:w-10 sm:h-10 text-accent/40 animate-spin" style={{ animationDuration: '14s' }} />
-                          <div className="flex flex-col items-center gap-1">
-                            <Compass className="w-8 h-8 sm:w-14 sm:h-14 text-orange-accent/80 group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_12px_rgba(255,107,0,0.5)]" />
-                            <span className="text-[8px] sm:text-[9px] font-manrope font-extrabold text-accent/60 tracking-[0.2em] uppercase">Bespoke</span>
-                          </div>
-                          <Drill className="hidden sm:block w-8 h-8 sm:w-10 sm:h-10 text-accent/40" style={{ animation: 'spin 7s linear infinite reverse' }} />
-                        </div>
-
-                        {/* Shimmer sweep */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-1000 ease-in-out" />
-                      </div>
-
-                      {/* RIGHT — content panel */}
-                      <div className="flex-1 p-3 sm:p-7 lg:p-8 flex flex-col justify-between gap-3 sm:gap-5">
-                        <div className="space-y-2 sm:space-y-4">
-                          {/* Title row */}
-                          <div className="flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
-                            <h3 className="font-poppins font-bold text-sm sm:text-xl md:text-2xl text-white group-hover:text-accent transition-colors leading-tight">
-                              {prod.name}
-                            </h3>
-                          </div>
-
-                          <p className="text-[10px] sm:text-sm text-white/60 leading-relaxed max-w-2xl line-clamp-2 sm:line-clamp-none">
-                            {prod.shortDescription}
-                          </p>
-
-                          {/* Feature pills — hidden on mobile */}
-                          <div className="hidden sm:flex flex-wrap gap-1 sm:gap-2">
-                            {['LVDT Position Sensors', 'Double-Ended Rod', 'Marine Grade Coating', 'High-Temp Viton Seals', 'Bore up to 500mm', 'Up to 345 Bar'].map((tag) => (
-                              <span key={tag} className="text-[9px] sm:text-[11px] font-manrope font-semibold bg-accent/10 border border-accent/20 text-accent/80 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-
-                          <div className="hidden sm:block border-t border-white/5 pt-3 text-[10px] sm:text-[11px] font-manrope text-white/35 italic">
-                            ✦ Each cylinder engineered to your exact bore, stroke, pressure rating & environment — no two builds are the same
-                          </div>
-                        </div>
-
-                        {/* CTA row */}
-                        <Link
-                          to={`/products/${prod.id}`}
-                          className="bg-gradient-to-r from-orange-accent to-accent text-white font-manrope font-extrabold text-[10px] sm:text-xs uppercase tracking-wider px-3 sm:px-6 py-2 sm:py-3.5 rounded-lg sm:rounded-xl transition-all flex items-center justify-center gap-1.5 hover:shadow-[0_0_24px_rgba(0,194,255,0.35)] whitespace-nowrap w-full"
-                        >
-                          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
-                          <span className="hidden sm:inline">Enquire Custom Build</span>
-                          <span className="sm:hidden">Enquire</span>
-                        </Link>
-                      </div>
-
-                    </div>
-                  </TiltCard>
-                </StaggerItem>
-              ) : (
-                /* ── STANDARD product card ── */
-                <StaggerItem key={prod.id} type="fade-up">
-                  <TiltCard className="h-full">
-                    <div className="glass-panel rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col justify-between group hover:border-accent/20 transition-all duration-300">
-
-                      {/* Image container */}
-                      <div className="h-32 sm:h-48 overflow-hidden relative bg-black">
+                      {/* Hero image — natural aspect ratio, no crop, no gaps */}
+                      <div className="relative w-full bg-[#0a0d10]" style={{ aspectRatio: '16/7' }}>
                         <img
-                          src={prod.image}
-                          alt={prod.name}
-                          className="w-full h-full object-contain scale-[1.12] group-hover:scale-[1.18] transition-transform duration-500"
+                          src={featuredProduct.image}
+                          alt={featuredProduct.name}
+                          className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-700"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg to-transparent opacity-80"></div>
-                        <span className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-orange-accent text-white font-manrope font-extrabold text-[8px] sm:text-[10px] tracking-wider uppercase px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded">
-                          ISO
-                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent" />
+
+                        {/* Badges */}
+                        <div className="absolute top-4 left-4 flex gap-2">
+                          <span className="bg-accent text-white font-manrope font-extrabold text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-full">
+                            FEATURED
+                          </span>
+                          {featuredProduct.standard && (
+                            <span className="bg-white/10 backdrop-blur-md text-white/80 font-manrope font-bold text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-full border border-white/20">
+                              {featuredProduct.standard}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
-                      {/* Body text details */}
-                      <div className="p-3 sm:p-6 flex-grow flex flex-col justify-between space-y-3 sm:space-y-6">
-                        <div className="space-y-1.5 sm:space-y-3">
-                          <h3 className="font-poppins font-bold text-[11px] sm:text-lg text-white group-hover:text-accent transition-colors leading-tight">
-                            {prod.name}
+                      {/* Body */}
+                      <div className="flex-1 p-6 md:p-8 flex flex-col justify-between gap-5">
+                        <div className="space-y-3">
+                          <h3 className="font-poppins font-black text-xl sm:text-2xl text-white group-hover:text-accent transition-colors leading-tight">
+                            {featuredProduct.name}
                           </h3>
-                          <p className="hidden sm:block text-xs text-white/60 line-clamp-3 leading-relaxed">
-                            {prod.shortDescription}
+                          <p className="text-sm text-white/60 leading-relaxed">
+                            {featuredProduct.shortDescription}
                           </p>
 
-                          {/* Short specs bullet */}
-                          <div className="pt-2 border-t border-white/5 space-y-1">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-0.5 text-[9px] sm:text-[11px] font-manrope text-white/50">
-                              <p>Bore: {prod.specifications.boreDia.replace(" to ", "-")}</p>
-                              <p>P: {formatPressure(prod.specifications.pressure)}</p>
+                          {/* Spec pills */}
+                          <div className="flex flex-wrap gap-2 pt-1">
+                            <span className="text-[10px] font-manrope font-semibold bg-accent/10 border border-accent/20 text-accent/80 px-3 py-1 rounded-full">
+                              Bore: {featuredProduct.specifications.boreDia}
+                            </span>
+                            <span className="text-[10px] font-manrope font-semibold bg-white/5 border border-white/10 text-white/60 px-3 py-1 rounded-full">
+                              P: {formatPressure(featuredProduct.specifications.pressure)}
+                            </span>
+                            <span className="text-[10px] font-manrope font-semibold bg-white/5 border border-white/10 text-white/60 px-3 py-1 rounded-full">
+                              {featuredProduct.specifications.seals} seals
+                            </span>
+                            <span className="text-[10px] font-manrope font-semibold bg-white/5 border border-white/10 text-white/60 px-3 py-1 rounded-full">
+                              Stroke: {featuredProduct.specifications.stroke}
+                            </span>
+                          </div>
+
+                          {/* Key features */}
+                          <div className="pt-2 border-t border-white/5 space-y-2">
+                            <p className="text-[9px] font-manrope font-extrabold text-white/30 uppercase tracking-widest">Key Features</p>
+                            <ul className="space-y-1.5">
+                              {featuredProduct.features.slice(0, 4).map((feat, i) => (
+                                <li key={i} className="flex items-start gap-2 text-[11px] font-inter text-white/60 leading-snug">
+                                  <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                                  {feat}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Applications */}
+                          <div className="pt-2 border-t border-white/5 space-y-2">
+                            <p className="text-[9px] font-manrope font-extrabold text-white/30 uppercase tracking-widest">Applications</p>
+                            <div className="grid grid-cols-2 gap-1.5">
+                              {featuredProduct.applications.map((app, i) => (
+                                <span key={i} className="text-[10px] font-manrope text-white/50 bg-white/[0.03] border border-white/5 px-2.5 py-1.5 rounded-lg leading-tight">
+                                  {app}
+                                </span>
+                              ))}
                             </div>
                           </div>
                         </div>
 
                         <Link
-                          to={`/products/${prod.id}`}
-                          className="bg-accent/10 border border-accent/20 text-accent w-full text-center font-manrope font-extrabold text-[9px] sm:text-xs uppercase tracking-wider py-2 sm:py-3.5 rounded-lg sm:rounded-xl hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all flex items-center justify-center gap-1"
+                          to={`/products/${featuredProduct.id}`}
+                          className="bg-accent text-white font-manrope font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl hover:bg-orange-600 hover:shadow-[0_0_24px_rgba(255,107,0,0.4)] transition-all flex items-center justify-center gap-2 group/btn"
                         >
-                          <span className="hidden sm:inline">Technical </span>Specs
-                          <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                          Technical Specs
+                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                         </Link>
                       </div>
-
                     </div>
                   </TiltCard>
-                </StaggerItem>
-              )
-            ))}
-          </StaggerContainer>
+                </ScrollReveal>
+
+                {/* ── 2 SMALL CARDS (Right, 5/12 cols, stacked) ── */}
+                <div className="lg:col-span-5 flex flex-col gap-4 md:gap-6">
+                  {smallProducts.map((prod, idx) => (
+                    <ScrollReveal key={prod.id} type="fade-left" delay={idx * 0.1} className="flex-1">
+                      <TiltCard className="h-full">
+                        <div className="glass-panel rounded-2xl overflow-hidden h-full flex flex-col group hover:border-accent/20 transition-all duration-400">
+
+                          {/* Image — natural aspect ratio, no crop */}
+                          <div className="relative w-full bg-[#0a0d10]" style={{ aspectRatio: '16/8' }}>
+                            <img
+                              src={prod.image}
+                              alt={prod.name}
+                              className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-500"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/70 via-transparent to-transparent" />
+                            <span className="absolute top-2 right-2 bg-orange-accent text-white font-manrope font-extrabold text-[8px] tracking-wider uppercase px-1.5 py-0.5 rounded">
+                              ISO
+                            </span>
+                          </div>
+
+                          {/* Content */}
+                          <div className="flex-1 p-4 flex flex-col justify-between gap-3">
+                            <div className="space-y-1">
+                              <h3 className="font-poppins font-bold text-sm sm:text-base text-white group-hover:text-accent transition-colors leading-tight">
+                                {prod.name}
+                              </h3>
+                              <p className="text-[11px] text-white/50 leading-relaxed line-clamp-2">
+                                {prod.shortDescription}
+                              </p>
+                              <div className="text-[10px] font-manrope text-white/40 pt-0.5 flex flex-wrap gap-x-3">
+                                <span>Bore: {prod.specifications.boreDia.replace(' to ', '-')}</span>
+                                <span>P: {formatPressure(prod.specifications.pressure)}</span>
+                              </div>
+                            </div>
+
+                            <Link
+                              to={`/products/${prod.id}`}
+                              className="bg-accent/10 border border-accent/20 text-accent text-center font-manrope font-extrabold text-[10px] uppercase tracking-wider py-2 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all flex items-center justify-center gap-1"
+                            >
+                              Technical Specs <ArrowRight className="w-3 h-3" />
+                            </Link>
+                          </div>
+
+                        </div>
+                      </TiltCard>
+                    </ScrollReveal>
+                  ))}
+                </div>
+
+              </div>
+            );
+          })()}
+
+          {/* View All Products CTA */}
+          <div className="flex justify-center mt-8 md:mt-10">
+            <Link
+              to="/products"
+              className="group inline-flex items-center gap-3 border border-accent/30 text-accent font-manrope font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-accent hover:text-white hover:border-accent hover:shadow-[0_0_28px_rgba(255,107,0,0.35)] transition-all duration-300"
+            >
+              View All Products
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
 
         </div>
       </section>
