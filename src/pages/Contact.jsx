@@ -13,7 +13,7 @@ const infoCards = [
   {
     icon: PhoneCall,
     title: 'Call & WhatsApp',
-    content: '+91 97371 13699\n+91 90165 26446',
+    content: '+91 97371 13699',
   },
   {
     icon: Mail,

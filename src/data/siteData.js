@@ -10,7 +10,7 @@ export const companyDetails = {
   foundedYear: 2024,
   experienceYears: 2,
   headquarters: "Ahmedabad, Gujarat, India",
-  phoneNumbers: ["+91 97371 13699", "+91 90165 26446"],
+  phoneNumbers: ["+91 97371 13699"],
   emails: ["marutihydraulics09@gmail.com"],
   address: "5th Floor, Office no. B-524, Pushpak Corner, Opp. Navyug School, Naroda, Ahmedabad - 382345, Gujarat, India",
   factoryAddress: "GIDC Industrial Estate, Naroda, Ahmedabad, Gujarat, India",
