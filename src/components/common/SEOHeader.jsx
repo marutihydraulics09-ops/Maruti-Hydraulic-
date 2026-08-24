@@ -20,14 +20,14 @@ export default function SEOHeader({ title, description, keywords, ogImage }) {
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description || defaultDesc} />
-      <meta property="og:image" content={ogImage || "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"} />
+      <meta property="og:image" content={ogImage || "https://www.marutihydraulics.in/LogoOG.png"} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={canonicalUrl} />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description || defaultDesc} />
-      <meta name="twitter:image" content={ogImage || "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"} />
+      <meta name="twitter:image" content={ogImage || "https://www.marutihydraulics.in/LogoOG.png"} />
 
       {/* Structured Data (Schema.org) for Manufacturing Company */}
       <script type="application/ld+json">
@@ -35,7 +35,7 @@ export default function SEOHeader({ title, description, keywords, ogImage }) {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "Maruti Hydraulics",
-          "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+          "image": "https://www.marutihydraulics.in/LogoOG.png",
           "telephone": "+91-9737113699",
           "email": "marutihydraulics09@gmail.com",
           "address": {
