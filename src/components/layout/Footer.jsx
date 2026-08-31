@@ -127,7 +127,7 @@ export default function Footer() {
                 { label: "Live Simulator", path: "/simulator" },
                 { label: "Projects Case Studies", path: "/projects" },
                 { label: "Knowledge Blog", path: "/blog" },
-                { label: "Download Brochure", path: "/Maruti Hydraulic Brochure.pdf", isStatic: true }
+                { label: "Download Brochure", path: "/Maruti%20Hydraulic%20Brochure.pdf", isStatic: true }
               ].map((link, idx) => {
                 if (link.isStatic) {
                   return (
@@ -135,6 +135,8 @@ export default function Footer() {
                       key={idx}
                       href={link.path}
                       download="Maruti_Hydraulic_Brochure.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-accent transition-colors font-manrope text-accent font-bold"
                     >
                       {link.label}

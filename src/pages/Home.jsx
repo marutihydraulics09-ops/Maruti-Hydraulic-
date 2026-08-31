@@ -202,8 +202,10 @@ export default function Home() {
 
               <Magnetic>
                 <a
-                  href="/Maruti Hydraulic Brochure.pdf"
+                  href="/Maruti%20Hydraulic%20Brochure.pdf"
                   download="Maruti_Hydraulic_Brochure.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white/5 border border-white/10 hover:border-accent text-white hover:text-accent font-manrope font-extrabold tracking-widest text-xs uppercase px-7 py-4 rounded-xl transition-all flex items-center gap-2 group cursor-pointer"
                 >
                   <Download className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
