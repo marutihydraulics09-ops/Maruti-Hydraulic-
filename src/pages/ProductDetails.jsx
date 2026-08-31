@@ -23,8 +23,32 @@ export default function ProductDetails() {
   return (
     <>
       <SEOHeader
-        title={`${product.name} Technical Specifications & Engineering Inquiry`}
-        description={`Get complete mechanical dimensions, operating envelopes, materials, and seals for Maruti ${product.name}. Request technical quote on WhatsApp.`}
+        title={`${product.name} Specifications`}
+        description={`Get complete mechanical dimensions, operating envelopes, materials, and seals for Maruti ${product.name}. Precision manufactured by Maruti Hydraulics Ahmedabad.`}
+        keywords={`${product.name}, Maruti Hydraulics ${product.name}, hydraulic cylinders Ahmedabad, industrial hydraulic cylinders`}
+        productSchema={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": `Maruti Hydraulics ${product.name}`,
+          "image": product.image ? `https://www.marutihydraulics.in${product.image}` : "https://www.marutihydraulics.in/LogoOG.png",
+          "description": product.description || `Industrial heavy-duty ${product.name} manufactured by Maruti Hydraulics Ahmedabad.`,
+          "brand": {
+            "@type": "Brand",
+            "name": "Maruti Hydraulics"
+          },
+          "manufacturer": {
+            "@type": "Organization",
+            "name": "Maruti Hydraulics"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "price": "10000",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": `https://www.marutihydraulics.in/products/${productId}`
+          }
+        }}
       />
 
       {/* Breadcrumbs */}

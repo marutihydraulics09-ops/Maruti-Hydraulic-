@@ -113,9 +113,9 @@ export default function Home() {
   return (
     <>
       <SEOHeader
-        title="Heavy Duty Hydraulic Cylinders & Power Packs Manufacturer"
-        description="Maruti Hydraulics designs and manufactures high-pressure, premium-grade tie-rod, welded, and telescopic hydraulic cylinders up to 345 bar in Ahmedabad, India."
-        keywords="hydraulic cylinders, power packs, double acting cylinders, telescopic cylinders, tie rod cylinders, mill type cylinders, India, Maruti Hydraulics"
+        title="Maruti Hydraulics | Heavy Duty Hydraulic Cylinders & Power Packs Manufacturer"
+        description="Maruti Hydraulics is a leading manufacturer of premium heavy-duty hydraulic cylinders (Tie-Rod, Welded, Mill Duty, Telescopic, Plunger) and custom power packs in Ahmedabad, Gujarat, India."
+        keywords="Maruti Hydraulics, Maruti Hydraulic, Maruti Hydraulics Ahmedabad, Heavy Duty Hydraulic Cylinders, Hydraulic Cylinders Manufacturer India, Hydraulic Power Packs, Tie Rod Cylinders, Welded Cylinders, Telescopic Cylinders, Mill Duty Cylinders, Ahmedabad Hydraulics"
       />
 
       {/* SECTION 1: Cinematic Hero */}
